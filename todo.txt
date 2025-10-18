@@ -1,6 +1,5 @@
 # TODO: Make chatty_cathy a Functioning, Packageable Product
 # Focus: Medium training runs on romance, fashion, beauty, girly themes
-# User will handle "naughty stuff" additions separately
 
 ## Project Structure & Packaging
 - [ ] Create proper directory structure:
@@ -33,7 +32,6 @@
 - [ ] Create prompt templates for fashion/beauty/romance generation
 - [ ] Add data validation to ensure quality content
 - [ ] Implement data augmentation for variety
-- [ ] [USER] Add "naughty stuff" content and handling (user responsibility)
 
 ## User Experience & Documentation
 - [ ] Create comprehensive README.md:
