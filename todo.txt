@@ -53,6 +53,19 @@
 - [ ] Test deployment on clean environments
 - [ ] Add licensing information
 
+## Multi-User Support & Hosting
+- [ ] Implement web-based UI with concurrent user support (Flask/FastAPI backend)
+- [ ] Add session management and user isolation for multiple simultaneous users
+- [ ] Create Python wrapper scripts to interface with Mojo code
+- [ ] Set up free/low-cost hosting:
+  - Frontend: Vercel/Netlify (free tier)
+  - Backend: Railway/Render (free tier with Python support)
+  - Database: SQLite for sessions (free) or Supabase (generous free tier)
+- [ ] Add rate limiting and resource management for concurrent requests
+- [ ] Implement optional user authentication system
+- [ ] Add WebSocket support for real-time training progress updates
+- [ ] Create Docker container for easy deployment across platforms
+
 ## Testing & Validation
 - [ ] Create unit tests for core functions
 - [ ] Add integration tests for training pipeline
