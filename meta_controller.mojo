@@ -1,11 +1,11 @@
-# lilith_meta_controller.mojo
+# chatty_cathy_meta_controller.mojo
 from collections import List, Dict, Tuple
 from math import exp, sqrt
 from random import random_float64
 from tensor import Tensor, TensorShape
 
 # NOTE: This is a high-level skeleton intended to be integrated with
-# your existing LilithCognitionCore and LilithLanguageModel.
+# your existing chatty_cathyCognitionCore and chatty_cathyLanguageModel.
 # Replace placeholders (e.g., neural updates) with your project's implementations.
 
 struct PredictionErrorRecord:
@@ -37,7 +37,7 @@ struct ItsAGirl:
     var style_prompts: List[String]
 
     fn __init__(inout self):
-        self.name = "Lilith"
+        self.name = "chatty_cathy"
         self.persona_tokens = Dict[String, Float32]()
         self.persona_tokens["feminine"] = 0.9
         self.persona_tokens["sensual"] = 0.8

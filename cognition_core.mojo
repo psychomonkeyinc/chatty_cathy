@@ -53,7 +53,7 @@ struct EmotionalState:
         return max_emotion
 
 
-struct LilithMemoryCore:
+struct chatty_cathyMemoryCore:
     """Memory system with emotional tagging"""
     var short_term: List[Tuple[String, EmotionalState]]
     var long_term: Dict[String, List[String]]  # Topic -> memories
@@ -91,23 +91,23 @@ struct LilithMemoryCore:
         return relevant
 
 
-struct LilithCognitionCore:
+struct chatty_cathyCognitionCore:
     """
-    Lilith v4 Cognition Core - Female personality with:
+    chatty_cathy v1 Cognition Core - Female personality with:
     - Conscious/subconscious/unconscious emotional layers
     - Fashion, makeup, beauty focus
     - Emotional memory and prediction
     """
     var emotional_state: EmotionalState
-    var memory: LilithMemoryCore
+    var memory: chatty_cathyMemoryCore
     var personality_traits: Dict[String, Float32]
     
     fn __init__(inout self):
         self.emotional_state = EmotionalState()
-        self.memory = LilithMemoryCore()
+        self.memory = chatty_cathyMemoryCore()
         self.personality_traits = Dict[String, Float32]()
         
-        # Define Lilith's personality
+        # Define chatty_cathy's personality
         self.personality_traits["feminine"] = 0.95
         self.personality_traits["fashion_conscious"] = 0.9
         self.personality_traits["emotionally_aware"] = 0.85
@@ -211,24 +211,24 @@ struct RomanceTransformer:
         return logits
 
 
-struct LilithLanguageModel:
+struct chatty_cathyLanguageModel:
     """
-    Language model with Lilith v4 cognition core integration
+    Language model with chatty_cathy v1 cognition core integration
     Generates romance novel text with emotional depth and fashion/beauty focus
     """
     var model: RomanceTransformer
-    var cognition: LilithCognitionCore
+    var cognition: chatty_cathyCognitionCore
     var tokenizer: BPETokenizer
     var vocab_size: Int
     
     fn __init__(inout self, vocab_size: Int, embed_dim: Int):
         self.vocab_size = vocab_size
         self.model = RomanceTransformer(vocab_size, embed_dim)
-        self.cognition = LilithCognitionCore()
+        self.cognition = chatty_cathyCognitionCore()
         self.tokenizer = BPETokenizer(vocab_size)
     
     fn generate(inout self, prompt: String, max_length: Int, temperature: Float32) -> String:
-        """Generate text with Lilith cognition overlay"""
+        """Generate text with chatty_cathy cognition overlay"""
         # Process prompt through cognition core
         var cognitive_context = self.cognition.process_input(prompt)
         
@@ -271,7 +271,7 @@ struct LilithLanguageModel:
         
         var base_text = self.tokenizer.decode(generated_tokens)
         
-        # Add Lilith's emotional layer
+        # Add chatty_cathy's emotional layer
         return self.cognition.generate_emotional_context(base_text)
     
     fn _get_fashion_beauty_tokens(self) -> List[Int]:
@@ -312,17 +312,17 @@ struct LilithLanguageModel:
 
 
 fn main():
-    print("=== Lilith v4 Cognition Core + Romance LM ===\n")
+    print("=== chatty_cathy v1 Cognition Core + Romance LM ===\n")
     
     var vocab_size = 50000  # BPE vocabulary
     var embed_dim = 256
     
-    var lm = LilithLanguageModel(vocab_size, embed_dim)
+    var lm = chatty_cathyLanguageModel(vocab_size, embed_dim)
     
     print("Model initialized:")
     print("  Vocab size:", vocab_size)
     print("  Embedding dim:", embed_dim)
-    print("  Cognition: Lilith v4 (emotional + memory)")
+    print("  Cognition: chatty_cathy v1 (emotional + memory)")
     print("  Focus: Fashion, beauty, romance")
     
     var test_prompt = "She wore a stunning red dress"

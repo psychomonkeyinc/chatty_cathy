@@ -3,13 +3,13 @@ from collections import List
 from math import log, exp
 from random import random_float64
 from input_token_output import TokenIO
-from conscious import LilithLanguageModel, LilithCognitionCore
+from cognition_core import chatty_cathyLanguageModel, chatty_cathyCognitionCore
 
 fn compute_loss_with_emotion(logits: Tensor[DType.float32], targets: List[Int],
-                              cognition: LilithCognitionCore) -> Float32:
+                              cognition: chatty_cathyCognitionCore) -> Float32:
     """
     Compute cross-entropy loss with emotional weighting
-    Lilith cognition core influences loss based on emotional state
+    chatty_cathy cognition core influences loss based on emotional state
     """
     var total_loss = Float32(0.0)
     var seq_len = len(targets)
@@ -44,10 +44,10 @@ fn compute_loss_with_emotion(logits: Tensor[DType.float32], targets: List[Int],
     return total_loss / Float32(seq_len)
 
 
-fn update_with_cognition(inout model: LilithLanguageModel, logits: Tensor[DType.float32],
+fn update_with_cognition(inout model: chatty_cathyLanguageModel, logits: Tensor[DType.float32],
                          tokens: List[Int], targets: List[Int], learning_rate: Float32):
     """
-    Update parameters with Lilith cognition guidance
+    Update parameters with chatty_cathy cognition guidance
     Fashion/beauty tokens get stronger updates
     """
     var seq_len = len(targets)
@@ -137,19 +137,19 @@ fn softmax_helper(logits: List[Float32]) -> List[Float32]:
     return probs
 
 
-fn train_lilith_model(inout model: LilithLanguageModel, text: String,
+fn train_chatty_cathy_model(inout model: chatty_cathyLanguageModel, text: String,
                       epochs: Int, seq_length: Int, learning_rate: Float32):
     """
-    Train Lilith language model on romance novels
+    Train chatty_cathy language model on romance novels
     Integrates emotional cognition during training
     """
     print("\n╔════════════════════════════════════════════════╗")
-    print("║   LILITH V4 TRAINING - Romance Novel Core     ║")
+    print("║   chatty_cathy v1 TRAINING - Romance Novel Core     ║")
     print("╚════════════════════════════════════════════════╝\n")
     
     print("Training data:", len(text), "characters")
     print("Focus: Fashion, makeup, beauty, romance")
-    print("Cognition: Conscious/Subconscious/Unconscious layers")
+    print("Cognition: cognition_core/Subcognition_core/Uncognition_core layers")
     print("Memory: Emotional tagging + fashion memory\n")
     
     # Tokenize
@@ -169,7 +169,7 @@ fn train_lilith_model(inout model: LilithLanguageModel, text: String,
         var total_loss = Float32(0.0)
         var batch_count = 0
         
-        # Update Lilith's emotional state each epoch
+        # Update chatty_cathy's emotional state each epoch
         model.cognition.emotional_state.update_from_text(text[:500])
         
         for b in range(len(inputs)):
@@ -192,18 +192,18 @@ fn train_lilith_model(inout model: LilithLanguageModel, text: String,
         var avg_loss = total_loss / Float32(batch_count)
         print("\n│ Epoch", epoch + 1, "/", epochs)
         print("│ Loss:", avg_loss)
-        print("│ Conscious emotions:", model.cognition.emotional_state.conscious_emotions)
-        print("│ Subconscious:", model.cognition.emotional_state.subconscious_emotions)
+        print("│ cognition_core emotions:", model.cognition.emotional_state.cognition_core_emotions)
+        print("│ Subcognition_core:", model.cognition.emotional_state.subcognition_core_emotions)
         print("│ Fashion memories:", len(model.cognition.memory.fashion_memory))
         print("─" * 50 + "\n")
     
     print("✓ Training complete!\n")
 
 
-fn evaluate_generation_quality(inout model: LilithLanguageModel, test_prompts: List[String]):
+fn evaluate_generation_quality(inout model: chatty_cathyLanguageModel, test_prompts: List[String]):
     """Test generation quality on fashion/beauty prompts"""
     print("\n╔════════════════════════════════════════════════╗")
-    print("║        LILITH GENERATION EVALUATION            ║")
+    print("║        chatty_cathy GENERATION EVALUATION            ║")
     print("╚════════════════════════════════════════════════╝\n")
     
     for i in range(len(test_prompts)):
@@ -225,7 +225,7 @@ fn evaluate_generation_quality(inout model: LilithLanguageModel, test_prompts: L
 
 fn main():
     print("╔════════════════════════════════════════════════╗")
-    print("║  LILITH V4 - Romance Novel Language Model     ║")
+    print("║  chatty_cathy v1 - Romance Novel Language Model     ║")
     print("║  Fashion • Beauty • Emotion • Memory          ║")
     print("╚════════════════════════════════════════════════╝\n")
     
@@ -245,8 +245,8 @@ fn main():
     print("Learning rate:  ", learning_rate)
     print("─" * 50 + "\n")
     
-    # Initialize Lilith model
-    var model = LilithLanguageModel(vocab_size, embed_dim)
+    # Initialize chatty_cathy model
+    var model = chatty_cathyLanguageModel(vocab_size, embed_dim)
     
     # Training corpus - Romance novel focused on fashion/beauty
     var training_text = """
@@ -310,10 +310,10 @@ fn main():
     print("1. Download dataset")
     print("2. Filter for fashion/beauty/risque content")
     print("3. Train BPE tokenizer (vocab_size=50k)")
-    print("4. Run training with Lilith cognition core\n")
+    print("4. Run training with chatty_cathy cognition core\n")
     
-    # Train with Lilith cognition
-    train_lilith_model(model, training_text, epochs, seq_length, learning_rate)
+    # Train with chatty_cathy cognition
+    train_chatty_cathy_model(model, training_text, epochs, seq_length, learning_rate)
     
     # Evaluation
     var test_prompts = List[String]()
@@ -327,7 +327,7 @@ fn main():
     
     # Final statistics
     print("\n╔════════════════════════════════════════════════╗")
-    print("║            LILITH V4 STATISTICS                ║")
+    print("║            chatty_cathy v1 STATISTICS                ║")
     print("╚════════════════════════════════════════════════╝\n")
     
     print("Personality traits:")
@@ -340,21 +340,21 @@ fn main():
     print("  Beauty preferences:", model.cognition.memory.beauty_preferences)
     
     print("\nEmotional state:")
-    print("  Conscious:", model.cognition.emotional_state.conscious_emotions)
-    print("  Subconscious:", model.cognition.emotional_state.subconscious_emotions)
-    print("  Patterns:", len(model.cognition.emotional_state.unconscious_patterns))
+    print("  cognition_core:", model.cognition.emotional_state.cognition_core_emotions)
+    print("  Subcognition_core:", model.cognition.emotional_state.subcognition_core_emotions)
+    print("  Patterns:", len(model.cognition.emotional_state.uncognition_core_patterns))
     
     print("\n" + "═" * 50)
-    print("TRAINING COMPLETE - Lilith v4 is ready")
+    print("TRAINING COMPLETE - chatty_cathy v1 is ready")
     print("Expected training time: 6-12 hours on full dataset")
     print("Competitive edge: Emotional depth + fashion expertise")
     print("═" * 50 + "\n")
     
     # Save instructions
     print("TO DEPLOY:")
-    print("1. Save model weights: model.save('lilith_v4.mojo')")
+    print("1. Save model weights: model.save('chatty_cathy_v1.mojo')")
     print("2. Save tokenizer vocab: tokenizer.save_vocab('vocab.json')")
-    print("3. Load for inference: LilithLanguageModel.load('lilith_v4.mojo')")
+    print("3. Load for inference: chatty_cathyLanguageModel.load('chatty_cathy_v1.mojo')")
     print("\nTO IMPROVE:")
     print("• Increase embed_dim to 512-1024")
     print("• Add attention layers for better context")
